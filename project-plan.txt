@@ -1,0 +1,27 @@
+Goal: create a single page web app able to fetch 
+posts mentioning Finland from Reddit using Reddit API.
+
+What I need to do:
+- file communicating with reddit API
+- create boilerplate HTML
+- create js file 
+
+Structure/features:
+- Purely posts, indefinite scrolling?
+- Finland on Reddit heading
+- searchbar
+- one single page
+- click on 'comments' to get comments
+- filter by 'all', 'Finland', or 'Suomi'
+
+
+Use:
+- React
+- Redux
+- Reddit JSON API
+ -> https://github.com/reddit-archive/reddit/wiki/JSON
+
+
+Styling:
+- Main colour: blue
+- solid Finland as tab icon
