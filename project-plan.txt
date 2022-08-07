@@ -25,3 +25,4 @@ Use:
 Styling:
 - Main colour: blue
 - solid Finland as tab icon
+- when input is clicked make border white
