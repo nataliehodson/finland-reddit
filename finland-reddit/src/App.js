@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './features/Footer/Footer';
 import Header from './features/Header/Header';
 
 function App() {
@@ -8,9 +9,7 @@ function App() {
       <body>
 
       </body>
-      <footer>
-        <a href="https://www.flaticon.com/free-icons/finland" title="finland icons">Finland icons created by Anditii Creative - Flaticon</a>
-      </footer>
+      <Footer />
     </div>
   );
 }
