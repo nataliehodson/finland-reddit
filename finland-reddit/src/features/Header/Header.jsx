@@ -10,8 +10,7 @@ const Header = () => {
             <div className='search-link'>
                 <div className='search'>
                     <input placeholder='Search...'/>
-                    {/*add search icon
-                    add icon for reddit*/}
+                    <button>Search</button>
                 </div>
                 <a className='reddit' href='reddit.com'>Reddit</a>
             </div>

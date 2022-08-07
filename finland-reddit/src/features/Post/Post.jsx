@@ -1,5 +1,6 @@
 import { getFinlandPosts } from "../../api/Reddit";
 import { getSuomiPosts } from "../../api/Reddit";
+import './Post.css'
 
 const Post = () => {
     return (

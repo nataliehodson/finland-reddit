@@ -1,0 +1,14 @@
+.post {
+    background-color: white;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 10%;
+}
+
+.post-whole {
+    width: 90%;
+}
