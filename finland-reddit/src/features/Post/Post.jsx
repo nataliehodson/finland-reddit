@@ -1,5 +1,5 @@
-import { getFinlandPosts } from "../../api/reddit";
-import { getSuomiPosts } from "../../api/reddit";
+import { getFinlandPosts } from "../../api/Reddit";
+import { getSuomiPosts } from "../../api/Reddit";
 
 const Post = () => {
     return (
@@ -23,3 +23,5 @@ const Post = () => {
         </div>
     )
 }
+
+export default Post;
