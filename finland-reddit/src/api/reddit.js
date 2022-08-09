@@ -12,4 +12,8 @@ export const getSuomiPosts = async () => {
     const json = await response.json();
 
     return json.data.children.map((post) => post.data);
+
+    
 };
+
+console.log(getSuomiPosts())

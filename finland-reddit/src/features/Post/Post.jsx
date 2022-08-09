@@ -1,22 +1,23 @@
-import { getFinlandPosts } from "../../api/Reddit";
-import { getSuomiPosts } from "../../api/Reddit";
 import './Post.css'
 
-const Post = () => {
+const Post = (props) => {
+    const {post} = props;
+    const correctDate = new Date(post.created*1000)
+    const dateString = correctDate.toLocaleDateString();
     return (
-        <div className="post">
+        <div key={post.id} className="post">
             <div className="sidebar">
-                <p>time posted</p>
-                <p>subreddit</p>
-                <p>username</p>
+                <p>{dateString}</p>
+                <p>{post.subreddit_name_prefixed}</p>
+                <p>{post.author}</p>
                 <div className="upvote-div">
                     <svg className="icon"></svg>
-                    <p>nbr upvotes</p>
+                    <p>{post.ups}</p>
                 </div>
             </div>
             <div className="post-whole">
-                <h2>Post title</h2>
-                <img className="post-img" />
+                <h2>{post.title}</h2>
+                <img className="post-img" src={post.url}/>
                 <div className="post-footer">
                     <svg></svg>
                 </div>
