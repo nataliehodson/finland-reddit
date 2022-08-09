@@ -1,8 +1,9 @@
 .post {
-    background-color: white;
+    background-color: #002F6C;
     margin-top: 140px;
     display: flex;
     flex-direction: row;
+    color: white;
 }
 
 .sidebar {
@@ -11,4 +12,8 @@
 
 .post-whole {
     width: 90%;
+}
+
+.post-img {
+    max-width: 100%;
 }
