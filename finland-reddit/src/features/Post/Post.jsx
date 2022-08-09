@@ -19,7 +19,7 @@ const Post = (props) => {
                 <h2>{post.title}</h2>
                 <img className="post-img" src={post.url}/>
                 <div className="post-footer">
-                    <svg></svg>
+                    <svg className="icon"></svg>
                 </div>
             </div>
         </div>
