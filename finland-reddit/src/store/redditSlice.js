@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFinlandPosts, getSuomiPosts } from '../api/Reddit';
+import { 
+    getFinlandPostsHot,
+    getFinlandPostsNew,
+    getFinlandPostsTop, 
+    getSuomiPostsHot,
+    getSuomiPostsNew,
+    getSuomiPostsTop 
+    } from '../api/Reddit';
 
 export const redditSlice = createSlice({
     name: 'redditPosts',
@@ -43,11 +50,17 @@ export const fetchPosts = () => async (dispatch) => {
         dispatch(startGetPosts());
 
         //Concatenate results of 'Finland' and 'Suomi' searches
-        const finlandPosts = await getFinlandPosts();
-        const suomiPosts = await getSuomiPosts();
-        const posts = await finlandPosts.concat(suomiPosts);
+        const finlandPostsHot = await getFinlandPostsHot();
+        const finlandPostsTop = await getFinlandPostsTop();
+        const finlandPostsNew = await getFinlandPostsNew();
+        const suomiPostsHot = await getSuomiPostsHot();
+        const suomiPostsTop = await getSuomiPostsTop();
+        const suomiPostsNew = await getSuomiPostsNew();
+        const postsHot = await finlandPostsHot.concat(suomiPostsHot);
+        const postsTop = await finlandPostsTop.concat(suomiPostsTop);
+        const postsNew = await finlandPostsNew.concat(suomiPostsNew);
 
-        const postsData = posts.map((post) => ({
+        const postsData = postsHot.map((post) => ({
             ...post,
             commentsVisible: false,
             comments: [],
