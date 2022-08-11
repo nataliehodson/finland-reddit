@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { 
-    getFinlandPostsHot,
-    getFinlandPostsNew,
-    getFinlandPostsTop, 
-    getSuomiPostsHot,
-    getSuomiPostsNew,
-    getSuomiPostsTop 
+    getFinlandPosts,
+    getSuomiPosts,
     } from '../api/Reddit';
 
 export const redditSlice = createSlice({
@@ -14,12 +10,18 @@ export const redditSlice = createSlice({
         posts: [],
         searchTerm: '',
         isLoading: false,
-        error: false
+        error: false,
+        sortMethod: 'hot',
     },
     reducers: {
         setPosts (state, action) {
             state.posts = action.payload;
         },
+
+        setSortMethod (state, action){
+            state.sortMethod = action.payload;
+        },
+
         startGetPosts (state) {
             state.isLoading = true;
             state.error = false;
@@ -45,22 +47,16 @@ export const redditSlice = createSlice({
 
 
 //Thunk to get posts
-export const fetchPosts = () => async (dispatch) => {
+export const fetchPosts = (sortMethod) => async (dispatch) => {
     try {
         dispatch(startGetPosts());
 
         //Concatenate results of 'Finland' and 'Suomi' searches
-        const finlandPostsHot = await getFinlandPostsHot();
-        const finlandPostsTop = await getFinlandPostsTop();
-        const finlandPostsNew = await getFinlandPostsNew();
-        const suomiPostsHot = await getSuomiPostsHot();
-        const suomiPostsTop = await getSuomiPostsTop();
-        const suomiPostsNew = await getSuomiPostsNew();
-        const postsHot = await finlandPostsHot.concat(suomiPostsHot);
-        const postsTop = await finlandPostsTop.concat(suomiPostsTop);
-        const postsNew = await finlandPostsNew.concat(suomiPostsNew);
+        const finlandPosts = await getFinlandPosts(sortMethod);
+        const suomiPosts = await getSuomiPosts(sortMethod);
+        const posts = await finlandPosts.concat(suomiPosts);
 
-        const postsData = postsHot.map((post) => ({
+        const postsData = posts.map((post) => ({
             ...post,
             commentsVisible: false,
             comments: [],
@@ -73,8 +69,10 @@ export const fetchPosts = () => async (dispatch) => {
 }
 
 
-//selector
+
+//selectors
 export const selectPosts = (state) => state.redditSlice.posts;
+export const selectSortMethod = (state) => state.redditSlice.sortMethod;
 //action creators
 export const { 
     setPosts,
@@ -82,6 +80,7 @@ export const {
     getPostsFulfilled,
     getPostsRejected,
     toggleCommentsVisible,
+    setSortMethod
     } = redditSlice.actions;
 //reducer
 export default redditSlice.reducer;

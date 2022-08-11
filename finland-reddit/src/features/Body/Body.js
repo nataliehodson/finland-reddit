@@ -7,10 +7,12 @@ import './Body.css'
 const Body = () => {
     const posts = useSelector(selectPosts);
     const dispatch = useDispatch();
+    const reddit = useSelector((state) => state.redditSlice)
+    const { sortMethod } = reddit
 
     useEffect(() => {
-        dispatch(fetchPosts())
-    })
+        dispatch(fetchPosts(sortMethod))
+    }, [sortMethod])
 
 
 
