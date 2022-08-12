@@ -1,0 +1,11 @@
+.comments-container {
+    height: 300px;
+    overflow: scroll;
+    margin-bottom: 40px;
+}
+
+.comment {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+}

@@ -28,10 +28,16 @@
 }
 
 .post-footer {
-    height: 40px
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .icon {
     height: 20px;
     width: 20px;
+}
+
+.comments-container {
+    height: auto;
 }
