@@ -2,6 +2,7 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Comment from '../Comment/Comment';
 import { MdModeComment } from 'react-icons/md';
+import { FaArrowUp } from 'react-icons/fa';
 import { useDispatch } from 'react-redux/es/exports';
 import './Post.css';
 
@@ -83,11 +84,11 @@ const Post = (props) => {
         <>
             <div key={post.id} className="post">
                 <div className="sidebar">
-                    <p>{dateString}</p>
+                    <p className='post-date'>{dateString}</p>
+                    <h3>{post.author}</h3>
                     <p>{post.subreddit_name_prefixed}</p>
-                    <p>{post.author}</p>
                     <div className="upvote-div">
-                        <svg className="icon"></svg>
+                        <FaArrowUp className='upvote-icon' />
                         <p>{post.ups}</p>
                     </div>
                 </div>
