@@ -39,5 +39,7 @@
 }
 
 .comments-container {
-    height: auto;
+    height: 300px;
+    overflow: scroll;
+    margin-bottom: 40px;
 }

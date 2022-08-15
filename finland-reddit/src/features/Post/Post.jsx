@@ -2,9 +2,9 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Comment from '../Comment/Comment';
 import { MdModeComment } from 'react-icons/md'
-import './Post.css';
 import { useDispatch } from 'react-redux/es/exports';
-import { fetchComments } from '../../store/redditSlice';
+import './Post.css';
+
 
 const Post = (props) => {
     const { post, onToggleComments } = props;
