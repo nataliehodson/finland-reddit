@@ -2,15 +2,22 @@
   --spacing-0: 200px
 }
 
-a {
+a, .icon {
   text-decoration: none;
   color: #B6CDE2;
-  transition: 0.5s;
+  transition: font-size 0.5s, height 0.5s, width 0.5s;
 }
 
-a:hover {
+a:hover, .icon:hover {
   color: white;
   transition: 0.5s;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.icon:hover{
+  height: 25px;
+  width: 25px;
 }
 
 main {

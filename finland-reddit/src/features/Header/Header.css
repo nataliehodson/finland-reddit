@@ -1,5 +1,5 @@
 .header {
-    height: auto;
+    height: 60px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -13,14 +13,19 @@
 }
 
 h1 {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Abril Fatface', cursive;
     font-size: 40px;
     margin: 0;
 }
 
-.title-image, .search-link {
-    margin: 0 10%;
+a {
+    font-size: 16px;
 }
+
+.title-image, .search-link{
+    margin: 0 5%;
+}
+
 
 .title-image {
     display: flex;
@@ -46,4 +51,19 @@ h1 {
 input {
     border: 2px solid #B6CDE2;
     border-radius: 6px;
+}
+
+.sortMethod {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.sortMethod a{
+    margin-right: 5px;
+}
+
+.icon {
+    margin-left: 10px;
+    color: #B6CDE2;
 }

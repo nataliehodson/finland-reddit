@@ -1,7 +1,7 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Comment from '../Comment/Comment';
-import { MdModeComment } from 'react-icons/md'
+import { MdModeComment } from 'react-icons/md';
 import { useDispatch } from 'react-redux/es/exports';
 import './Post.css';
 
@@ -97,10 +97,13 @@ const Post = (props) => {
                       {showMediaType()}
                     </div>
                     <div className="post-footer">
-                        <MdModeComment 
+                      <div className='comment-icon'>
+                          <MdModeComment 
                             className={`icon ${post.commentsVisible && 'comments-showing'}`}
                             onClick={()=> onToggleComments(post.permalink)}
-                            />
+                          />
+                      </div>
+                        
                         {renderComments()}
                         
                     </div>
