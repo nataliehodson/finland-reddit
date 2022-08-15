@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { 
     getFinlandPosts,
     getSuomiPosts,
-    getComments
+    getComments,
+    searchFinland,
+    searchSuomi
     } from '../api/Reddit';
 
 export const redditSlice = createSlice({
@@ -99,6 +101,30 @@ export const fetchComments = (index, permalink) => async (dispatch) => {
     } catch (error){
        dispatch(getCommentsRejected(index))
     }
+}
+
+export const searchPosts = (searchTerm) => async (dispatch) => {
+    try {
+        dispatch(startGetPosts());
+
+        const finlandPosts = await searchFinland(searchTerm);
+        const suomiPosts = await searchSuomi(searchTerm);
+        const posts = await finlandPosts.concat(suomiPosts);
+
+        const postsData = posts.map((post) => ({
+            ...post,
+            commentsVisible: false,
+            comments: [],
+            commentsLoading: false,
+            commentsError: false,
+        }));
+
+        dispatch(getPostsFulfilled(postsData))
+
+    } catch (error) {
+        dispatch(getPostsRejected())
+    }
+    
 }
 
 //selectors

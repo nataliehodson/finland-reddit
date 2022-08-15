@@ -1,12 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {  setSortMethod } from '../../store/redditSlice';
+import {  searchPosts, setSortMethod } from '../../store/redditSlice';
 import { FaSearch } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
 
     const dispatch = useDispatch();
+
+    const search = (searchTerm) => {
+        dispatch(searchPosts(searchTerm))
+    }
 
     return (
         <header className="header">
@@ -16,7 +20,7 @@ const Header = () => {
             <div className='search-link'>
                 <div className='search'>
                     <input placeholder='Search...'/>
-                    <FaSearch className='icon'/>
+                    <FaSearch className='icon' type='submit' onClick={search}/>
                 </div>
                 <div className='sortMethod'>
                     <a id='sort' value='hot' onClick={() => dispatch(setSortMethod('hot'))}>Hot</a>
