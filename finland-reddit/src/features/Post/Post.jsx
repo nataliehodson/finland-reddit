@@ -12,11 +12,38 @@ const Post = (props) => {
     const dateString = correctDate.toLocaleDateString();
     const dispatch = useDispatch()
 
-    /*if(post.url == 'https://i.redd.it/*') {
-        document.getElementById('img').style.display = 'block';
-    } else {
-        document.getElementById('img').style.display = 'none';
-    }*/
+    const showMediaType = () => {
+      if(post.post_hint === 'image') {
+        return (
+          <>
+            <img className='post-img' src={post.url}/>
+          </>
+        )
+      } else if(post.is_video === true) {
+        return (
+          <>
+            <video className='post-video' controls>
+              <source src={post.secure_media.reddit_video.fallback_url} />
+              Your browser does not support the video tag.
+            </video>
+          </>
+        )
+      } else if(post.post_hint === 'link') {
+        <>
+          <a href={post.url}>Link to article</a>
+        </>
+      } else {
+          let postText = post.selftext;
+          return (
+            <>
+              <p className='post-text'>{postText}</p>
+            </>
+          )
+      }
+      
+    }
+
+
     const renderComments = () => {
         if (post.commentsError) {
           return (
@@ -66,8 +93,8 @@ const Post = (props) => {
                 </div>
                 <div className="post-whole">
                     <h2>{post.title}</h2>
-                    <div className='imgContainer' id='img'>
-                        <img className="post-img" src={post.url}/>
+                    <div className='imgContainer'>
+                      {showMediaType()}
                     </div>
                     <div className="post-footer">
                         <MdModeComment 

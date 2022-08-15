@@ -3,7 +3,7 @@ export const apiRoot = 'https://www.reddit.com/'
 export const getFinlandPosts = async (sortMethod) => {
     const response = await fetch(`${apiRoot}search.json?q=finland&sort=${sortMethod}`);
     const json = await response.json();
-
+    
     return json.data.children.map((post) => post.data);
 };
 
