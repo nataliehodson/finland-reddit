@@ -70,10 +70,10 @@ main {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #B6CDE2;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #537594;
 }
