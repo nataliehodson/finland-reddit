@@ -8,8 +8,8 @@ const Header = () => {
 
     const dispatch = useDispatch();
 
-    const search = (searchTerm) => {
-        dispatch(searchPosts(searchTerm))
+    const search = () => {
+        dispatch(searchPosts(document.getElementById('searchText').value))
     }
 
     return (
@@ -19,7 +19,7 @@ const Header = () => {
             </div>
             <div className='search-link'>
                 <div className='search'>
-                    <input placeholder='Search...'/>
+                    <input placeholder='Search...' id='searchText'/>
                     <FaSearch className='icon' type='submit' onClick={search}/>
                 </div>
                 <div className='sortMethod'>
