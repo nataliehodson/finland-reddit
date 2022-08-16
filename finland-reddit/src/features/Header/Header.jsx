@@ -10,6 +10,14 @@ const Header = () => {
 
     const search = () => {
         dispatch(searchPosts(document.getElementById('searchText').value))
+        document.getElementById('searchText').value = '';
+    }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            dispatch(searchPosts(document.getElementById('searchText').value))
+            document.getElementById('searchText').value = '';
+        }
     }
 
     return (
@@ -19,7 +27,7 @@ const Header = () => {
             </div>
             <div className='search-link'>
                 <div className='search'>
-                    <input placeholder='Search...' id='searchText'/>
+                    <input placeholder='Search...' id='searchText' onKeyDown={handleKeyPress}/>
                     <FaSearch className='icon' type='submit' onClick={search}/>
                 </div>
                 <div className='sortMethod'>
