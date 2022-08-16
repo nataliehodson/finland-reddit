@@ -35,11 +35,20 @@ const Post = (props) => {
         </>
       } else {
           let postText = post.selftext;
-          return (
-            <>
-              <p className='post-text'>{postText}</p>
-            </>
-          )
+          if (postText.length > 2000) {
+            return (
+              <>
+                <p className='long-post-text'>{postText}</p>
+              </>
+            )
+          } else {
+            return (
+              <>
+                <p className='post-text'>{postText}</p>
+              </>
+            )
+          }
+          
       }
       
     }
