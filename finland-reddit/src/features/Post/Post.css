@@ -68,6 +68,7 @@
 .post-text, .long-post-text {
     text-align: justify;
     direction: ltr;
+    padding: 5px;
 }
 
 .post-text {
@@ -79,6 +80,5 @@
     height: 500px;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 5px;
 }
 
