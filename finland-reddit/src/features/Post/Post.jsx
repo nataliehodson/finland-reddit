@@ -20,7 +20,7 @@ const Post = (props) => {
             <img className='post-img' src={post.url}/>
           </>
         )
-      } else if(post.is_video === true) {
+      } else if(post.post_hint === 'hosted:video') {
         return (
           <>
             <video className='post-video' controls>
@@ -29,28 +29,31 @@ const Post = (props) => {
             </video>
           </>
         )
-      } else if(post.post_hint === 'link') {
-        <>
-          <a href={post.url}>Link to article</a>
-        </>
-      } else {
-          let postText = post.selftext;
-          if (postText.length > 2000) {
+      } else if (post.secure_media === null){
+        
+        if(post.post_hint === 'link'){
+          return (
+            <>
+              <a href={post.url} target='_blank'>Read more</a>
+            </>
+          )
+          
+        } else {
+          if (post.selftext.length > 2000) {
             return (
               <>
-                <p className='long-post-text'>{postText}</p>
+                <p className='long-post-text'>{post.selftext}</p>
               </>
             )
           } else {
             return (
               <>
-                <p className='post-text'>{postText}</p>
+                <p className='post-text'>{post.selftext}</p>
               </>
             )
           }
-          
+        }
       }
-      
     }
 
 
